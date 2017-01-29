@@ -14,9 +14,9 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="/">Home</a></li>
-        <li><a href="/contact">Contact</a></li>
-        <li><a href="/about">About</a></li>
+        <li class="{{ Request::is('/') ? 'active' : '' }}"><a href="/">Home</a></li>
+        <li class="{{ Request::is('contact') ? 'active' : '' }}"><a href="contact">Contact</a></li>
+        <li class="{{ Request::is('about') ? 'active' : '' }}"><a href="about">About</a></li>
       </ul>
       <!--<form class="navbar-form navbar-left" role="search">
         <div class="form-group">
@@ -26,7 +26,7 @@
       </form>-->
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">User <b class="caret"></b></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account <b class="caret"></b></a>
           <ul class="dropdown-menu">
             <li><a href="#">Profile</a></li>
             <li><a href="#">Settings</a></li>

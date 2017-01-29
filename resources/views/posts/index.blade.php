@@ -1,23 +1,50 @@
-@extends('layouts.two-column')
+@extends('layouts.one-column')
 
-@section('title', '| Home')
-
-@include('includes.header')
+@section('title', '| All Posts')
 
 @section('content')
-    <h1>Welcome to my blog</h1>
-    
-    <h2>Proin volutpat non tellus eget tincidunt. </h2>
-    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla facilisi. Fusce varius pretium diam, quis congue eros auctor sed. Vivamus commodo nisi ex, quis eleifend nunc rhoncus sed. In volutpat, elit sed congue feugiat, sem justo rutrum risus, convallis tincidunt ligula nibh eu velit. Aenean arcu erat, semper ac velit at, sagittis tincidunt lacus. Nulla imperdiet pretium tincidunt. Duis aliquam, justo in pharetra bibendum, elit ipsum pellentesque mauris, a laoreet eros enim ut leo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed vehicula libero id lorem rhoncus molestie. Praesent vitae urna massa.</p>
-    <div><a href="#" class="btn btn-default">Read more</a></div>
 
-    <h2>Proin volutpat non tellus eget tincidunt. </h2>
-    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla facilisi. Fusce varius pretium diam, quis congue eros auctor sed. Vivamus commodo nisi ex, quis eleifend nunc rhoncus sed. In volutpat, elit sed congue feugiat, sem justo rutrum risus, convallis tincidunt ligula nibh eu velit. Aenean arcu erat, semper ac velit at, sagittis tincidunt lacus. Nulla imperdiet pretium tincidunt. Duis aliquam, justo in pharetra bibendum, elit ipsum pellentesque mauris, a laoreet eros enim ut leo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed vehicula libero id lorem rhoncus molestie. Praesent vitae urna massa.</p>
-    <div><a href="#" class="btn btn-default">Read more</a></div>
+    <div class="row">
+        <div class="col-md-10">
+            <h1>All Posts</h1>
+        </div>
+        <div class="col-md-2">
+            <div class="btn-container">
+                <a href="{{ route('posts.create') }}" class="btn btn-primary btn-lg btn-block">Create</a>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <hr>
+        </div>
+    </div>
 
-    <h2>Proin volutpat non tellus eget tincidunt. </h2>
-    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla facilisi. Fusce varius pretium diam, quis congue eros auctor sed. Vivamus commodo nisi ex, quis eleifend nunc rhoncus sed. In volutpat, elit sed congue feugiat, sem justo rutrum risus, convallis tincidunt ligula nibh eu velit. Aenean arcu erat, semper ac velit at, sagittis tincidunt lacus. Nulla imperdiet pretium tincidunt. Duis aliquam, justo in pharetra bibendum, elit ipsum pellentesque mauris, a laoreet eros enim ut leo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed vehicula libero id lorem rhoncus molestie. Praesent vitae urna massa.</p>
-    <div><a href="#" class="btn btn-default">Read more</a></div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Body</th>
+                    <th>Created At</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    @foreach($posts as $post)
+                        <tr>
+                            <th>{{ $post->id }}</th>
+                            <td>{{ $post->title }}</td>
+                            <td>{{ substr($post->body, 0, 50) }}{{ strlen($post->body) > 50 ? "..." : "" }}</td>
+                            <td>{{ date('M j, Y', strtotime($post->created_at)) }}</td>
+                            <td>
+                                <a href="{{ route('posts.show', $post->id) }}" class="btn btn-default btn-sm">View</a>
+                                <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-default btn-sm">Edit</a>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
 
 @endsection
 
