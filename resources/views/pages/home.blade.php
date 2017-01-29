@@ -7,19 +7,19 @@
 @endsection
 
 @section('content')
-    <h1>Welcome to my blog</h1>
-    
-    <h2>Proin volutpat non tellus eget tincidunt. </h2>
-    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla facilisi. Fusce varius pretium diam, quis congue eros auctor sed. Vivamus commodo nisi ex, quis eleifend nunc rhoncus sed. In volutpat, elit sed congue feugiat, sem justo rutrum risus, convallis tincidunt ligula nibh eu velit. Aenean arcu erat, semper ac velit at, sagittis tincidunt lacus. Nulla imperdiet pretium tincidunt. Duis aliquam, justo in pharetra bibendum, elit ipsum pellentesque mauris, a laoreet eros enim ut leo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed vehicula libero id lorem rhoncus molestie. Praesent vitae urna massa.</p>
-    <div><a href="#" class="btn btn-default">Read more</a></div>
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Welcome to my blog</h1>
+            
+            @foreach($posts as $post)
+                <h3>{{ $post->title }}</h3>
+                <p>{{ substr($post->body, 0, 300) }}{{ strlen($post->body) > 300 ? "..." : "" }}</p>
+                <div><a href="#" class="btn btn-default">Read more</a></div>
+                <hr>
+            @endforeach
 
-    <h2>Proin volutpat non tellus eget tincidunt. </h2>
-    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla facilisi. Fusce varius pretium diam, quis congue eros auctor sed. Vivamus commodo nisi ex, quis eleifend nunc rhoncus sed. In volutpat, elit sed congue feugiat, sem justo rutrum risus, convallis tincidunt ligula nibh eu velit. Aenean arcu erat, semper ac velit at, sagittis tincidunt lacus. Nulla imperdiet pretium tincidunt. Duis aliquam, justo in pharetra bibendum, elit ipsum pellentesque mauris, a laoreet eros enim ut leo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed vehicula libero id lorem rhoncus molestie. Praesent vitae urna massa.</p>
-    <div><a href="#" class="btn btn-default">Read more</a></div>
-
-    <h2>Proin volutpat non tellus eget tincidunt. </h2>
-    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla facilisi. Fusce varius pretium diam, quis congue eros auctor sed. Vivamus commodo nisi ex, quis eleifend nunc rhoncus sed. In volutpat, elit sed congue feugiat, sem justo rutrum risus, convallis tincidunt ligula nibh eu velit. Aenean arcu erat, semper ac velit at, sagittis tincidunt lacus. Nulla imperdiet pretium tincidunt. Duis aliquam, justo in pharetra bibendum, elit ipsum pellentesque mauris, a laoreet eros enim ut leo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed vehicula libero id lorem rhoncus molestie. Praesent vitae urna massa.</p>
-    <div><a href="#" class="btn btn-default">Read more</a></div>
+        </div>
+    </div>
 
 @endsection
 
