@@ -9,6 +9,9 @@
                 {{ Form::label('title', 'Title:') }}
                 {{ Form::text('title', null, array('class' => 'form-control input-lg')) }}
 
+                {{ Form::label('slug', 'Slug:', array('class' => 'form-spacing-top')) }}
+                {{ Form::text('slug', null, array('class' => 'form-control')) }}
+
                 {{ Form::label('body', 'Body:', array('class' => 'form-spacing-top')) }}
                 {{ Form::textarea('body', null, array('class' => 'form-control')) }}
             </div>
