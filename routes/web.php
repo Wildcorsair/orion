@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('auth/login', 'Auth\LoginController@getLogin');
 
 Route::get('blog/{slug}', ['as' => 'blog.single', 'uses' => 'Blog\BlogController@getSingle'])
     ->where('slug', '[\w\d\-\_]+');
