@@ -14,7 +14,7 @@
             @foreach($posts as $post)
                 <h3>{{ $post->title }}</h3>
                 <p>{{ substr($post->body, 0, 300) }}{{ strlen($post->body) > 300 ? "..." : "" }}</p>
-                <div><a href="#" class="btn btn-default">Read more</a></div>
+                <div><a href="{{ url('blog/' . $post->slug) }}" class="btn btn-default">Read more</a></div>
                 <hr>
             @endforeach
 

@@ -11,7 +11,8 @@
 |
 */
 
-Route::get('blog/{slug}', ['as' => 'blog.single', 'uses' => 'BlogController@getSingle']);
+Route::get('blog/{slug}', ['as' => 'blog.single', 'uses' => 'Blog\BlogController@getSingle'])
+    ->where('slug', '[\w\d\-\_]+');
 Route::get('contact', ['as' => 'contactPage', 'uses' => 'Page\PageController@getContact']);
 Route::get('about', 'Page\PageController@getAbout');
 Route::get('/', 'Page\PageController@getHome');
