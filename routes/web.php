@@ -11,6 +11,7 @@
 |
 */
 Route::get('auth/login', 'Auth\LoginController@getLogin');
+Route::get('auth/register', 'Auth\RegisterController@getRegister');
 
 Route::get('blog/{slug}', ['as' => 'blog.single', 'uses' => 'Blog\BlogController@getSingle'])
     ->where('slug', '[\w\d\-\_]+');
