@@ -25,17 +25,23 @@
         </div>
         <button type="submit" class="btn btn-default">Отправить</button>
       </form>-->
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="{{ route('posts.index') }}">Posts</a></li>
-            <li><a href="#">Settings</a></li>
-            <li class="divider"></li>
-            <li><a href="{{ url('/logout') }}">Logout</a></li>
-          </ul>
-        </li>
-      </ul>
+      @if (Auth::check())
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hello, {{ Auth::user()->name }} <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="{{ route('posts.index') }}">Posts</a></li>
+              <li><a href="#">Settings</a></li>
+              <li class="divider"></li>
+              <li><a href="{{ url('/logout') }}">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      @else
+        <div class="pull-right btn-login-spacing">
+          <a href="{{ url('/login') }}" class="btn btn-default">Login</a>
+        </div>
+      @endif
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>

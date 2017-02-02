@@ -11,15 +11,6 @@
 |
 */
 
-// Log in user
-// Route::get('login', 'Auth\LoginController@login');
-// Route::post('login', 'Auth\LoginController@postLogin');
-Route::get('logout', 'Auth\LoginController@logout');
-
-// // Reister user
-// Route::get('auth/register', 'Auth\RegisterController@getRegister');
-// Route::post('auth/register', 'Auth\RegisterController@postRegister');
-
 Route::get('blog/{slug}', ['as' => 'blog.single', 'uses' => 'Blog\BlogController@getSingle'])
     ->where('slug', '[\w\d\-\_]+');
 Route::get('blog', ['as' => 'blog.index', 'uses' => 'Blog\BlogController@getIndex']);
@@ -29,3 +20,4 @@ Route::get('/', 'Page\PageController@getHome');
 Route::resource('posts', 'Post\PostController');
 
 Auth::routes();
+Route::get('logout', 'Auth\LoginController@logout');
