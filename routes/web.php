@@ -10,8 +10,15 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('auth/login', 'Auth\LoginController@getLogin');
-Route::get('auth/register', 'Auth\RegisterController@getRegister');
+
+// Log in user
+// Route::get('login', 'Auth\LoginController@login');
+// Route::post('login', 'Auth\LoginController@postLogin');
+Route::get('logout', 'Auth\LoginController@logout');
+
+// // Reister user
+// Route::get('auth/register', 'Auth\RegisterController@getRegister');
+// Route::post('auth/register', 'Auth\RegisterController@postRegister');
 
 Route::get('blog/{slug}', ['as' => 'blog.single', 'uses' => 'Blog\BlogController@getSingle'])
     ->where('slug', '[\w\d\-\_]+');
@@ -20,3 +27,5 @@ Route::get('contact', ['as' => 'contactPage', 'uses' => 'Page\PageController@get
 Route::get('about', 'Page\PageController@getAbout');
 Route::get('/', 'Page\PageController@getHome');
 Route::resource('posts', 'Post\PostController');
+
+Auth::routes();

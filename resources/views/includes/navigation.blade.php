@@ -32,7 +32,7 @@
             <li><a href="{{ route('posts.index') }}">Posts</a></li>
             <li><a href="#">Settings</a></li>
             <li class="divider"></li>
-            <li><a href="#">Logout</a></li>
+            <li><a href="{{ url('/logout') }}">Logout</a></li>
           </ul>
         </li>
       </ul>
