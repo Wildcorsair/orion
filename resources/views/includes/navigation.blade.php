@@ -31,6 +31,7 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hello, {{ Auth::user()->name }} <b class="caret"></b></a>
             <ul class="dropdown-menu">
               <li><a href="{{ route('posts.index') }}">Posts</a></li>
+              <li><a href="{{ route('categories.index') }}">Categories</a></li>
               <li><a href="#">Settings</a></li>
               <li class="divider"></li>
               <li><a href="{{ url('/logout') }}">Logout</a></li>

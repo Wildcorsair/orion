@@ -23,3 +23,5 @@ Auth::routes();
 Route::get('logout', 'Auth\LoginController@logout');
 Route::get('password/reset/{token?}', 'Auth\ResetPasswordController@showResetForm');
 Route::get('password/email', 'Auth\ForgotPasswordController@showLinkRequestForm');
+
+Route::resource('categories', 'Category\CategoryController', ['except' => ['create']]);
