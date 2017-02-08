@@ -7,4 +7,6 @@
 		"data-parsley-maxlength": "255"
 	});
 
+	$('#select-tags').select2();
+
 })(jQuery);

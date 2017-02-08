@@ -2,6 +2,11 @@
 
 @section('title', '| Edit Post')
 
+@section('stylesheets')
+    {!! Html::style('css/parsley.css') !!}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+@endsection
+
 @section('content')
     <div class="row">
         {!! Form::model($post, array('route' => array('posts.update', $post->id), 'method' => 'PUT')) !!}
@@ -14,6 +19,9 @@
 
                 {{ Form::label('category_id', 'Category:', array('class' => 'form-spacing-top')) }}
                 {{ Form::select('category_id', $categories, null, array('class' => 'form-control')) }}
+
+                {{ Form::label('tags', 'Tags', array('class' => 'form-spacing-top')) }}
+                {{ Form::select('tags[]', $tags, null, ['id' => 'select-tags', 'class' => 'form-control', 'multiple' => 'multiple']) }}
 
                 {{ Form::label('body', 'Body:', array('class' => 'form-spacing-top')) }}
                 {{ Form::textarea('body', null, array('class' => 'form-control')) }}
@@ -42,4 +50,13 @@
             </div>
         {!! Form::close() !!}
     </div> <!-- end of .row -->
+@endsection
+
+@section('scripts')
+    {!! Html::script('js/parsley.min.js') !!}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+    {!! Html::script('js/functions.js') !!}
+    <script>
+        $('#select-tags').select2().val({{ json_encode($post->tags()->getRelatedIds()) }}).trigger('change');
+    </script>
 @endsection

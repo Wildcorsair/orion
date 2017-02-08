@@ -4,6 +4,7 @@
 
 @section('stylesheets')
     {!! Html::style('css/parsley.css') !!}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
 @endsection
 
 @section('content')
@@ -15,16 +16,19 @@
                 {{ Form::label('title', 'Title:') }}
                 {{ Form::text('title', null, array('class' => 'form-control')) }}
 
-                {{ Form::label('slug', 'Slug:') }}
+                {{ Form::label('slug', 'Slug:', array('class' => 'form-spacing-top')) }}
                 {{ Form::text('slug', null, array('class' => 'form-control', 'required' => '', 'maxlength' => '255')) }}
 
-                {{ Form::label('category_id', 'Category') }}
+                {{ Form::label('category_id', 'Category', array('class' => 'form-spacing-top')) }}
                 {{ Form::select('category_id', $categories, null, ['class' => 'form-control']) }}
 
-                {{ Form::label('body', 'Body:') }}
+                {{ Form::label('tags', 'Tags', array('class' => 'form-spacing-top')) }}
+                {{ Form::select('tags[]', $tags, null, ['id' => 'select-tags', 'class' => 'form-control', 'multiple' => 'multiple']) }}
+
+                {{ Form::label('body', 'Body:', array('class' => 'form-spacing-top')) }}
                 {{ Form::textarea('body', null, array('class' => 'form-control', 'required' => '')) }}
 
-                {{ Form::submit('Create Post', array('class' => 'btn btn-success btn-lg btn-block')) }}
+                {{ Form::submit('Create Post', array('class' => 'btn btn-success btn-lg btn-block btn-h1-spacing')) }}
             {!! Form::close() !!}
         </div>
     </div>
@@ -33,5 +37,6 @@
 
 @section('scripts')
     {!! Html::script('js/parsley.min.js') !!}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
     {!! Html::script('js/functions.js') !!}
 @endsection

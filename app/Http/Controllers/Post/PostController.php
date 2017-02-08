@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Post;
 use App\Category;
+use App\Tag;
 use Session;
 
 class PostController extends Controller
@@ -33,7 +34,8 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::all()->pluck('name', 'id');
-        return view('posts.create')->withCategories($categories);
+        $tags = Tag::all()->pluck('name', 'id');
+        return view('posts.create')->withCategories($categories)->withTags($tags);
     }
 
     /**
@@ -59,6 +61,8 @@ class PostController extends Controller
     	$post->body = $request->body;
 
     	$post->save();
+
+        $post->tags()->sync($request->tags, false);
 
     	Session::flash('success', 'The blog post was successfully saved!');
 
@@ -88,7 +92,8 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $categories = Category::all()->pluck('name', 'id');
-        return view('posts.edit')->with('post', $post)->with('categories', $categories);
+        $tags = Tag::all()->pluck('name', 'id');
+        return view('posts.edit')->with('post', $post)->with('categories', $categories)->with('tags', $tags);
     }
 
     /**
