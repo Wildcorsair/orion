@@ -25,3 +25,4 @@ Route::get('password/reset/{token?}', 'Auth\ResetPasswordController@showResetFor
 Route::get('password/email', 'Auth\ForgotPasswordController@showLinkRequestForm');
 
 Route::resource('categories', 'Category\CategoryController', ['except' => ['create']]);
+Route::resource('tags', 'Tag\TagController', ['except' => ['create']]);

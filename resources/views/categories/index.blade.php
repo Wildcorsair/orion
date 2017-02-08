@@ -31,7 +31,7 @@
             {{ Form::label('name', 'Category Name:') }}
             {{ Form::text('name', null, ['class' => 'form-control']) }}
 
-            {{ Form::submit('Create New Category', ['class' => 'btn btn-default btn-block']) }}
+            {{ Form::submit('Create New Category', ['class' => 'btn btn-primary btn-block btn-h1-spacing']) }}
         {!! Form::close() !!}
     </div>
 @endsection
