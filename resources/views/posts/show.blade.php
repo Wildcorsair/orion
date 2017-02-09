@@ -18,19 +18,19 @@
 		</div>
 		<div class="col-md-4">
 			<div class="well">
-                <dl class="dl-horizontal">
+                <dl>
                     <dt>URL:</dt>
                     <dd><a href="{{ route('blog.single', $post->slug) }}">{{ url('blog/' . $post->slug) }}</a></dd>
                 </dl>
-				<dl class="dl-horizontal">
+				<dl>
 					<dt>Category:</dt>
 					<dd>{{ $post->category->name }}</dd>
 				</dl>
-				<dl class="dl-horizontal">
+				<dl>
 					<dt>Created At:</dt>
 					<dd>{{ $post->created_at }}</dd>
 				</dl>
-				<dl class="dl-horizontal">
+				<dl>
 					<dt>Updated At:</dt>
 					<dd>{{ $post->updated_at }}</dd>
 				</dl>
