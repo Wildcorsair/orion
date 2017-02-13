@@ -33,5 +33,14 @@
 @endsection
 
 @section('sidebar')
-    <a href="{{ route('tags.edit', $tag->id) }}" class="btn btn-primary pull-right form-spacing-top">Edit</a>
+    <div class="row">
+        <div class="col-md-6">
+            <a href="{{ route('tags.edit', $tag->id) }}" class="btn btn-primary btn-block pull-right form-spacing-top">Edit</a>
+        </div>
+        <div class="col-md-6">
+            {!! Form::open(['route' => ['tags.destroy', $tag->id], 'method' => 'DELETE']) !!}
+            {{ Form::submit('Delete', ['class' => 'btn btn-danger btn-block form-spacing-top']) }}
+            {!! Form::close() !!}
+        </div>
+    </div>
 @endsection
