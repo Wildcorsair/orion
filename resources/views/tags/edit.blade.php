@@ -3,8 +3,10 @@
 @section('title', '| Edit Tag')
 
 @section('content')
-    {!! Form::open() !!}
-        {{ Form::label('title', 'Title:') }}
-        {{ Form::text('title', null, ['class' => 'form-control']) }}
+    {!! Form::model($tag, ['route' => ['tags.update', $tag->id], 'method' => 'PUT']) !!}
+        {{ Form::label('name', 'Title:') }}
+        {{ Form::text('name', null, ['class' => 'form-control']) }}
+
+        {{ Form::submit('Save Changes', ['class' => 'btn btn-success btn-h1-spacing']) }}
     {!! Form::close() !!}
 @endsection
