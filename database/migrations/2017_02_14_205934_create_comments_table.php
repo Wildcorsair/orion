@@ -19,9 +19,11 @@ class CreateCommentsTable extends Migration
             $table->string('email');
             $table->text('comment');
             $table->boolean('approved');
-            $table->integer('post_id');
+            $table->integer('post_id')->unsigned();
             $table->timestamps();
+        });
 
+        Schema::table('comments', function(Blueprint $table) {
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
         });
     }
@@ -33,6 +35,7 @@ class CreateCommentsTable extends Migration
      */
     public function down()
     {
+        Schema::dropForeign(['comments_post_id_foreign']);
         Schema::dropIfExists('comments');
     }
 }
