@@ -9,6 +9,29 @@
     <p>Posted in: {{ $post->category->name }}</p>
     <hr>
     <div class="row">
+        <div class="col-md-12">
+            <h3 class="comment-title">
+                {{ $post->comments()->count() }}&nbsp;Comments
+                <span class="glyphicon glyphicon-comment"></span>
+            </h3>
+            @foreach($post->comments as $comment)
+                <div class="comment">
+                    <div class="author-info">
+                        <img src="{{ "https://www.gravatar.com/avatar/" . md5(strtolower(trim($comment->email))) . "?s=50&d=monsterid" }}" class="author-image">
+                        <div class="author-name">
+                            <h4>{{ $comment->name }}</h4>
+                            <p class="author-time">{{ date('F nS G:i', strtotime($comment->created_at)) }}</p>
+                        </div>
+                    </div>
+                    <div class="comment-content">
+                        <p>{{ $comment->comment }}</p>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+    <hr>
+    <div class="row">
         {!! Form::open(['route' => ['comments.store', $post->id]]) !!}
             <div class="col-md-6">
                 {{ Form::label('name', 'Name:', ['class' => 'form-spacing-top']) }}
@@ -29,5 +52,5 @@
 @endsection
 
 @section('sidebar')
-    <h2>Sidebar</h2>
+    <h3>Most popular</h3>
 @endsection
