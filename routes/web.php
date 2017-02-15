@@ -19,6 +19,8 @@ Route::post('contact', ['as' => 'contactForm', 'uses' => 'Page\PageController@po
 Route::get('about', 'Page\PageController@getAbout');
 Route::get('/', 'Page\PageController@getHome');
 Route::resource('posts', 'Post\PostController');
+Route::post('comments/{post_id}/store', ['as' => 'comments.store', 'uses' => 'Comment\CommentController@store'])
+    ->where('post_id', '[0-9]+');
 
 Auth::routes();
 Route::get('logout', 'Auth\LoginController@logout');
