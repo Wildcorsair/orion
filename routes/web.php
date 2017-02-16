@@ -21,6 +21,10 @@ Route::get('/', 'Page\PageController@getHome');
 Route::resource('posts', 'Post\PostController');
 Route::post('comments/{post_id}/store', ['as' => 'comments.store', 'uses' => 'Comment\CommentController@store'])
     ->where('post_id', '[0-9]+');
+Route::get('comments/{id}/edit', ['as' => 'comments.edit', 'uses' => 'Comment\CommentController@edit']);
+Route::put('comments/{id}', ['as' => 'comments.update', 'uses' => 'Comment\CommentController@update']);
+Route::delete('comments/{id}', ['as' => 'comments.destroy', 'uses' => 'Comment\CommentController@destroy']);
+Route::get('comments/{id}/delete', ['as' => 'comments.delete', 'uses' => 'Comment\CommentController@delete']);
 
 Auth::routes();
 Route::get('logout', 'Auth\LoginController@logout');
