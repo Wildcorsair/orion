@@ -38,5 +38,6 @@
 @section('scripts')
     {!! Html::script('js/parsley.min.js') !!}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+    <script src="//cloud.tinymce.com/stable/tinymce.min.js"></script>
     {!! Html::script('js/functions.js') !!}
 @endsection

@@ -59,4 +59,5 @@
     <script>
         $('#select-tags').select2().val({{ json_encode($post->tags()->getRelatedIds()) }}).trigger('change');
     </script>
+    <script src="//cloud.tinymce.com/stable/tinymce.min.js"></script>
 @endsection

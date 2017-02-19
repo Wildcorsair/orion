@@ -4,7 +4,7 @@
 
 @section('content')
     <h1>{{ $post->title }}</h1>
-    <p>{{ $post->body }}</p>
+    <p>{!! $post->body !!}</p>
     <hr>
     <p>Posted in: {{ $post->category->name }}</p>
     <hr>
