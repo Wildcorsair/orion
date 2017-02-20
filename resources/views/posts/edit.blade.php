@@ -9,7 +9,7 @@
 
 @section('content')
     <div class="row">
-        {!! Form::model($post, array('route' => array('posts.update', $post->id), 'method' => 'PUT')) !!}
+        {!! Form::model($post, array('route' => array('posts.update', $post->id), 'method' => 'PUT', 'files' => true)) !!}
             <div class="col-md-8">
                 {{ Form::label('title', 'Title:') }}
                 {{ Form::text('title', null, array('class' => 'form-control input-lg')) }}
@@ -22,6 +22,9 @@
 
                 {{ Form::label('tags', 'Tags', array('class' => 'form-spacing-top')) }}
                 {{ Form::select('tags[]', $tags, null, ['id' => 'select-tags', 'class' => 'form-control', 'multiple' => 'multiple']) }}
+
+                {{ Form::label('featured_image', 'Update featured image:', array('class' => 'form-spacing-top')) }}
+                {{ Form::file('featured_image') }}
 
                 {{ Form::label('body', 'Body:', array('class' => 'form-spacing-top')) }}
                 {{ Form::textarea('body', null, array('class' => 'form-control')) }}

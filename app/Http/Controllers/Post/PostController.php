@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Post;
 use App\Category;
 use App\Tag;
+use Illuminate\Support\Facades\Storage;
 use Session;
 use Purifier;
 use Image;
@@ -122,13 +123,15 @@ class PostController extends Controller
             $this->validate($request, array(
                 'title' => 'required|max:255',
                 'category_id' => 'required|integer',
-                'body' => 'required'
+                'featured_image' => 'sometimes|image',
+                'body' => 'required',
             ));
         } else {
             $this->validate($request, array(
                 'title' => 'required|max:255',
                 'category_id' => 'required|integer',
                 'slug' => 'required|alpha_dash|min:5|max:255|unique:posts,slug',
+                'featured_image' => 'sometimes|image',
                 'body' => 'required'
             ));
         }
@@ -137,6 +140,19 @@ class PostController extends Controller
         $post->slug = $request->slug;
         $post->category_id = $request->category_id;
         $post->body = Purifier::clean($request->body);
+
+        if ($request->hasFile('featured_image')) {
+            $image = $request->file('featured_image');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $location = public_path('images/' . $filename);
+            Image::make($image)->resize(800, 400)->save($location);
+
+            $oldFilename = $post->image;
+
+            $post->image = $filename;
+
+            Storage::delete(public_path('images/' . $oldFilename));
+        }
 
         $post->save();
 
@@ -162,6 +178,8 @@ class PostController extends Controller
         $post = Post::find($id);
 
         $post->tags()->detach();
+
+        Storage::delete(public_path('images/' . $post->image));
 
         $post->delete();
 
