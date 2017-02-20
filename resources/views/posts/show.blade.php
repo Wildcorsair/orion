@@ -7,7 +7,7 @@
 		<div class="col-md-8">
 			<h1>{{ $post->title }}</h1>
 			<p class="lead">
-				{!! $post->body !!}
+				{!! clean($post->body) !!}
 			</p>
 			<div class="tags">
 				@foreach($post->tags as $tag)

@@ -12,7 +12,7 @@
         <div class="col-md-8 col-md-offset-2">
             <h2>Create Post</h2>
             <hr>
-            {!! Form::open(array('route' => 'posts.store', 'id' => 'create-post-form')) !!}
+            {!! Form::open(array('route' => 'posts.store', 'id' => 'create-post-form', 'files' => true)) !!}
                 {{ Form::label('title', 'Title:') }}
                 {{ Form::text('title', null, array('class' => 'form-control')) }}
 
@@ -25,8 +25,11 @@
                 {{ Form::label('tags', 'Tags', array('class' => 'form-spacing-top')) }}
                 {{ Form::select('tags[]', $tags, null, ['id' => 'select-tags', 'class' => 'form-control', 'multiple' => 'multiple']) }}
 
+                {{ Form::label('featured_image', 'Upload featured image:', array('class' => 'form-spacing-top')) }}
+                {{ Form::file('featured_image') }}
+
                 {{ Form::label('body', 'Body:', array('class' => 'form-spacing-top')) }}
-                {{ Form::textarea('body', null, array('class' => 'form-control', 'required' => '')) }}
+                {{ Form::textarea('body', null, array('class' => 'form-control')) }}
 
                 {{ Form::submit('Create Post', array('class' => 'btn btn-success btn-lg btn-block btn-h1-spacing')) }}
             {!! Form::close() !!}

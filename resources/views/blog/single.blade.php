@@ -4,7 +4,8 @@
 
 @section('content')
     <h1>{{ $post->title }}</h1>
-    <p>{!! $post->body !!}</p>
+    <img src="{{ asset('images/' . $post->image) }}" width="800" height="400">
+    <p>{!! clean($post->body) !!}</p>
     <hr>
     <p>Posted in: {{ $post->category->name }}</p>
     <hr>
