@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <h1>Categories</h1>
+    <h1>Tags</h1>
     <table class="table">
         <thead>
         <tr>
@@ -26,7 +26,7 @@
 
 @section('sidebar')
     <div class="well">
-        <h3>New Category</h3>
+        <h3>New Tag</h3>
         {!! Form::open(['route' => 'tags.store']) !!}
         {{ Form::label('name', 'Tag Name:') }}
         {{ Form::text('name', null, ['class' => 'form-control']) }}

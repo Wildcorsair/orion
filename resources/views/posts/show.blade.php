@@ -6,8 +6,8 @@
 	<div class="row">
 		<div class="col-md-8">
 			<h1>{{ $post->title }}</h1>
-			<img src="{{ asset('images/' . $post->image) }}" width="780" height="380" alt="The post image">
-			<p class="lead">
+			<img src="{{ asset('images/' . $post->image) }}" width="750" height="380" alt="The post image">
+			<p>
 				{!! clean($post->body) !!}
 			</p>
 			<div class="tags">
