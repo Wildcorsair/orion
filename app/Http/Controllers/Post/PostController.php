@@ -56,11 +56,12 @@ class PostController extends Controller
         	'body' => 'required'
     	));
 
+        $category = Category::find($request->category_id);
     	$post = new Post();
 
         $post->title = $request->title;
     	$post->slug = $request->slug;
-    	$post->category_id = $request->category_id;
+        $post->category()->associate($category);
     	$post->body = Purifier::clean($request->body);
 
     	if ($request->hasFile('featured_image')) {
